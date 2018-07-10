@@ -13,14 +13,14 @@ npm install
 - git flow init
 - And press enter to all options
 
+# If not
+apt-get install git-flow
+
 # Install firebase
 npm install --save firebase
 
 # Install vuetify - https://vuetifyjs.com/en/getting-started/quick-start
 npm install vuetify --save
-
-# If not
-apt-get install git-flow
 
 # serve with hot reload at localhost:8080
 npm run dev
