@@ -25,6 +25,14 @@ export default {
       text: '',
     };
   },
+  mounted() {
+    const database = firebase.database().ref('posts/');
+    database.once('value', (posts) => {
+      Object.keys(posts.val()).forEach((key) => {
+        this.postList.push(posts.val()[key]);
+      });
+    });
+  },
   methods: {
     createPost() {
       if (this.text) {
