@@ -14,7 +14,7 @@
 </template>
 <script>
 import PostList from '@/components/PostList';
-import firebase from 'firebase';
+import postApi from '@/api/posts';
 
 export default {
   name: 'Home',
@@ -26,24 +26,18 @@ export default {
     };
   },
   mounted() {
-    const database = firebase.database().ref('posts/');
-    database.once('value', (posts) => {
-      Object.keys(posts.val()).forEach((key) => {
-        this.postList.push(posts.val()[key]);
+    const self = this;
+    postApi.getAllPosts((posts) => {
+      posts.forEach((item) => {
+        self.postList.push(item);
       });
     });
   },
   methods: {
     createPost() {
       if (this.text) {
-        const database = firebase.database().ref('posts/');
-        const post = { uid: '', text: '' };
-        database.push({ text: this.text }).then((res) => {
-          post.uid = res.key;
-          res.on('child_added', (item) => {
-            post.text = item.val();
-            this.postList.push(post);
-          });
+        postApi.createPost(this.text, (post) => {
+          this.postList.push(post);
         });
         this.text = '';
       }
