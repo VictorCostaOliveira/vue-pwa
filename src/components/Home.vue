@@ -14,6 +14,7 @@
 </template>
 <script>
 import PostList from '@/components/PostList';
+import firebase from 'firebase';
 
 export default {
   name: 'Home',
@@ -26,12 +27,22 @@ export default {
   },
   methods: {
     createPost() {
-      this.postList.push(this.text);
-      this.text = '';
+      if (this.text) {
+        const database = firebase.database().ref('posts/');
+        const post = { uid: '', text: '' };
+        database.push({ text: this.text }).then((res) => {
+          post.uid = res.key;
+          res.on('child_added', (item) => {
+            post.text = item.val();
+            this.postList.push(post);
+          });
+        });
+        this.text = '';
+      }
     },
   },
 };
 </script>
-<style scoped>
+<style>
 
 </style>
