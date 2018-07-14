@@ -1,41 +1,38 @@
 <template>
-  <v-list two-line >
-    <div v-for="(post, index) in posts">
+  <v-list two-line class="meu-item">
+    <div v-for="(post, index) in posts" class="teste">
+
       <v-list-tile
         :key="post.title"
         avatar
-        ripple
-        @click="toggle(index)"
+        @click=""
       >
+        <v-list-tile-avatar>
+          <img src="https://cdn.vuetifyjs.com/images/lists/1.jpg">
+        </v-list-tile-avatar>
+
         <v-list-tile-content>
-          <v-list-tile-title>{{ post.text }}</v-list-tile-title>
-          <!-- <v-list-tile-sub-title class="text--primary">{{ post.headline }}</v-list-tile-sub-title>
-          <v-list-tile-sub-title>{{ post.subtitle }}</v-list-tile-sub-title> -->
+          <v-list-tile-title >Victor Costa</v-list-tile-title>
+          <v-list-tile-sub-title >{{ post.text }}</v-list-tile-sub-title>
         </v-list-tile-content>
-
-        <v-list-tile-action>
-          <v-list-tile-action-text>{{ post.action }}</v-list-tile-action-text>
-          <v-icon
-            v-if="selected.indexOf(index) < 0"
-            color="grey lighten-1"
-          >
-            star_border
-          </v-icon>
-
-          <v-icon
-            v-else
-            color="yellow darken-2"
-          >
-            star
-          </v-icon>
-        </v-list-tile-action>
-
       </v-list-tile>
-      <v-divider
-        v-if="index + 1 < posts.length"
-        :key="index"
-      ></v-divider>
+      <!-- <v-list-tile-action @click="toggle(index)">
+        <v-list-tile-action-text>{{ post.action }}</v-list-tile-action-text>
+        <v-icon
+          v-if="selected.indexOf(index) < 0"
+          color="grey lighten-1"
+        >
+          star_border
+        </v-icon>
 
+        <v-icon
+          v-else
+          color="yellow darken-2"
+        >
+          star
+        </v-icon>
+      </v-list-tile-action> -->
+      <v-divider></v-divider>
     </div>
   </v-list>
 </template>
@@ -61,5 +58,11 @@ export default {
 };
 </script>
 <style>
-
+.meu-item {
+  border-radius: 10px;
+  box-shadow: 0 3px 1px -2px rgba(0,0,0,.2)
+}
+.list-item {
+  position: relative;
+}
 </style>
