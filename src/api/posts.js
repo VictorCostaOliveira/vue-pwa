@@ -1,6 +1,10 @@
 import firebase from 'firebase';
+import ApiConfig from '@/api/ApiConfig';
+
+ApiConfig.init();
 
 const database = firebase.database().ref('posts/');
+
 
 export default {
   createPost(postText, callback) {
