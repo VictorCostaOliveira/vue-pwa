@@ -19,13 +19,15 @@
 <script>
 export default {
   data() {
-    url: window.location,
+    return {
+      url: window.location,
+    };
   },
   mounted() {
-    navigator.serviceWorker.register('service-worker.js').then(res => {
+    navigator.serviceWorker.register('service-worker.js').then((res) => {
       alert(res.active.scriptURL);
-    })
-  }
+    });
+  },
 };
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
