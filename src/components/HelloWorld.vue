@@ -8,6 +8,7 @@
           <footer>
             <small>
               <em>&mdash;John Johnson</em>
+              <em>{{ url }}</em>
             </small>
           </footer>
         </blockquote>
@@ -15,7 +16,18 @@
     </v-slide-y-transition>
   </v-container>
 </template>
-
+<script>
+export default {
+  data() {
+    url: window.location,
+  },
+  mounted() {
+    navigator.serviceWorker.register('service-worker.js').then(res => {
+      alert(res.active.scriptURL);
+    })
+  }
+};
+</script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 h1, h2 {
