@@ -25,6 +25,7 @@
       </v-list> -->
     </v-navigation-drawer>
     <v-toolbar
+      v-if="false"
       app
       :clipped-left="clipped"
     >

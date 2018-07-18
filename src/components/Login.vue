@@ -19,7 +19,9 @@ export default {
   },
   methods: {
     login(payload) {
-      auth.login(payload);
+      auth.login(payload, (response) => {
+        alert(response);
+      });
     },
   },
 };

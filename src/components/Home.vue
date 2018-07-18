@@ -9,12 +9,14 @@
         @keyup.enter="createPost"
       ></v-text-field>
     </v-flex>
+    <h1>Olá {{ userName }}</h1>
     <post-list :posts="postList"></post-list>
   </v-container>
 </template>
 <script>
 import PostList from '@/components/PostList';
 import postApi from '../api/posts';
+import auth from '../api/firebase-auth';
 
 export default {
   name: 'Home',
@@ -41,6 +43,12 @@ export default {
         });
         this.text = '';
       }
+    },
+  },
+  computed: {
+    userName() {
+      const user = auth.currentUser();
+      return user.displayName;
     },
   },
 };
