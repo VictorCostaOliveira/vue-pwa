@@ -1,12 +1,8 @@
-import firebase from 'firebase';
-import ApiConfig from '@/api/ApiConfig';
-
-ApiConfig.init();
+import firebase from '@/api/Api';
 
 const database = firebase.database().ref('posts/');
 
-
-export default {
+const postApi = {
   createPost(postText, callback) {
     const post = { uid: '', text: '' };
     database.push({ text: postText }).then((res) => {
@@ -27,4 +23,4 @@ export default {
     });
   },
 };
-
+export default postApi;

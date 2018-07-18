@@ -14,7 +14,7 @@
 </template>
 <script>
 import PostList from '@/components/PostList';
-import postApi from '@/api/posts';
+import postApi from '../api/posts';
 
 export default {
   name: 'Home',
