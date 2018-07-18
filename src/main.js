@@ -3,6 +3,7 @@
 import Vue from 'vue';
 import Vuetify from 'vuetify';
 import 'vuetify/dist/vuetify.min.css';
+import firebase from '@/api/Api';
 import App from './App';
 import router from './router';
 
@@ -10,9 +11,12 @@ Vue.use(Vuetify);
 Vue.config.productionTip = false;
 
 /* eslint-disable no-new */
-new Vue({
-  el: '#app',
-  router,
-  components: { App },
-  template: '<App/>',
-});
+firebase.auth()
+  .onAuthStateChanged(() => {
+    new Vue({
+      el: '#app',
+      router,
+      components: { App },
+      template: '<App/>',
+    });
+  });
