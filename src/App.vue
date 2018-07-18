@@ -25,17 +25,18 @@
       </v-list> -->
     </v-navigation-drawer>
     <v-toolbar
+      v-if="false"
       app
       :clipped-left="clipped"
     >
-      <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
+      <!-- <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon> -->
       <v-spacer></v-spacer>
     </v-toolbar>
     <v-content>
       <router-view/>
     </v-content>
-    <v-footer :fixed="fixed" app>
-    </v-footer>
+    <!-- <v-footer :fixed="fixed" app>
+    </v-footer> -->
   </v-app>
 </template>
 
