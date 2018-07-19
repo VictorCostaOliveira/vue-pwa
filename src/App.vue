@@ -1,19 +1,8 @@
 <template>
   <v-app>
-    <v-navigation-drawer
-      persistent
-      :mini-variant="miniVariant"
-      :clipped="clipped"
-      v-model="drawer"
-      enable-resize-watcher
-      fixed
-      app
-    >
+    <v-navigation-drawer persistent :mini-variant="miniVariant" :clipped="clipped" v-model="drawer" enable-resize-watcher fixed app>
       <v-list>
-        <v-list-tile
-          value="true"
-          @click="signOut"
-        >
+        <v-list-tile value="true" @click="signOut">
           <v-list-tile-action>
             <v-icon v-html="icon"></v-icon>
           </v-list-tile-action>
@@ -23,11 +12,7 @@
         </v-list-tile>
       </v-list>
     </v-navigation-drawer>
-    <v-toolbar
-      v-if="needTollBar"
-      app
-      :clipped-left="clipped"
-    >
+    <v-toolbar v-if="needTollBar" app :clipped-left="clipped">
       <v-toolbar-side-icon  @click.stop="drawer = !drawer"></v-toolbar-side-icon>
       <v-spacer></v-spacer>
     </v-toolbar>
@@ -41,7 +26,6 @@
 
 <script>
 import auth from '@/api/firebase-auth';
-import firebase from '@/api/Api';
 
 export default {
   name: 'App',
@@ -60,9 +44,7 @@ export default {
   },
   methods: {
     signOut() {
-      firebase.auth().signOut().then(() => {
-        this.$router.push('/');
-      });
+      auth.signOut();
     },
   },
   computed: {

@@ -32,8 +32,9 @@ const auth = {
   },
 
   signOut() {
-    firebase.signOut();
-    router.push('/');
+    firebaseAuth.signOut().then(() => {
+      this.$router.push('/');
+    });
   },
 };
 
