@@ -8,7 +8,7 @@
         @click=""
       >
         <v-list-tile-avatar>
-          <img :src="post.user.photoUrl">
+          <img v-if="!!post.user.photoUrl" :src="post.user.photoUrl">
         </v-list-tile-avatar>
 
         <v-list-tile-content>
