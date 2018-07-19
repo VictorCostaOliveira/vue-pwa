@@ -45,6 +45,8 @@ router.beforeEach((to, from, next) => {
   const isAutenticated = auth.currentUser();
   if (requiresAuth && !isAutenticated) {
     next('/signin');
+  } else if (!requiresAuth && isAutenticated) {
+    next('/home-page');
   } else {
     next();
   }
