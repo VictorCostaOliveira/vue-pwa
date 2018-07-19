@@ -43,8 +43,11 @@ const router = new Router({
 router.beforeEach((to, from, next) => {
   const requiresAuth = to.matched.some(record => record.meta.requiresAuth);
   const isAutenticated = auth.currentUser();
+  debugger;
   if (requiresAuth && !isAutenticated) {
     next('/signin');
+  } else if (!requiresAuth && isAutenticated) {
+    next('/home-page');
   } else {
     next();
   }

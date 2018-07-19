@@ -17,16 +17,24 @@ const auth = {
       });
   },
   login(user, callback) {
-    firebaseAuth.signInWithEmailAndPassword(user.email, user.password)
+    firebaseAuth.setPersistence(`${firebase.auth.Auth.Persistence.SESSION}`)
       .then(() => {
-        router.push('/home-page');
-      }).catch((error) => {
-        callback(error.message);
+        firebaseAuth.signInWithEmailAndPassword(user.email, user.password)
+          .then(() => {
+            debugger;
+            router.push('/home-page');
+          }).catch((error) => {
+            callback(error.message);
+          });
       });
   },
-
   currentUser() {
     return firebaseAuth.currentUser;
+  },
+
+  signOut() {
+    firebase.signOut();
+    router.push('/');
   },
 };
 
