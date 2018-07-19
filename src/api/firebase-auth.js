@@ -5,19 +5,23 @@ const firebaseAuth = firebase.auth();
 
 const auth = {
   signin(user, callback) {
-    firebaseAuth.createUserWithEmailAndPassword(user.email, user.password)
-      .then((response) => {
-        response.user.updateProfile({
-          displayName: user.name,
-        }).then(() => {
-          router.push('/home-page');
-        });
-      }).catch((error) => {
-        callback(error.message);
+    firebaseAuth.setPersistence(firebase.auth.Auth.Persistence.SESSION)
+      .then(() => {
+        firebaseAuth.createUserWithEmailAndPassword(user.email, user.password)
+          .then((response) => {
+            response.user.updateProfile({
+              displayName: user.name,
+              photoURL: user.photoUrl,
+            }).then(() => {
+              router.push('/home-page');
+            });
+          }).catch((error) => {
+            callback(error.message);
+          });
       });
   },
   login(user, callback) {
-    firebaseAuth.setPersistence(`${firebase.auth.Auth.Persistence.SESSION}`)
+    firebaseAuth.setPersistence(firebase.auth.Auth.Persistence.SESSION)
       .then(() => {
         firebaseAuth.signInWithEmailAndPassword(user.email, user.password)
           .then(() => {
@@ -33,7 +37,7 @@ const auth = {
 
   signOut() {
     firebaseAuth.signOut().then(() => {
-      this.$router.push('/');
+      router.push('/');
     });
   },
 };

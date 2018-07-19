@@ -8,11 +8,11 @@
         @click=""
       >
         <v-list-tile-avatar>
-          <img src="https://cdn.vuetifyjs.com/images/lists/1.jpg">
+          <img :src="post.user.photoUrl">
         </v-list-tile-avatar>
 
         <v-list-tile-content>
-          <v-list-tile-title >Victor Costa</v-list-tile-title>
+          <v-list-tile-title >{{ post.user.name }}</v-list-tile-title>
           <v-list-tile-sub-title >{{ post.text }}</v-list-tile-sub-title>
         </v-list-tile-content>
       </v-list-tile>
