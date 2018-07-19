@@ -15,6 +15,11 @@
         required
       ></v-text-field>
       <v-text-field
+        v-model="user.photoUrl"
+        label="Link da foto"
+        required
+      ></v-text-field>
+      <v-text-field
         v-model="user.password"
         :rules="passwordRules"
         type="password"
@@ -39,6 +44,7 @@ export default {
         name: '',
         email: '',
         password: '',
+        photoUrl: '',
       },
       valid: false,
       nameRules: [

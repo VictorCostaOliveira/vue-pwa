@@ -7,11 +7,16 @@ const database = firebase.database().ref('posts/');
 const postApi = {
   createPost(postText, callback) {
     const post = { uid: '', text: '' };
-    const user = auth.currentUser();
-    database.push({ text: postText }).then((res) => {
+    const user = {
+      uid: auth.currentUser().uid,
+      name: auth.currentUser().displayName,
+      photoUrl: auth.currentUser().photoURL,
+    };
+    database.push({ text: postText, user }).then((res) => {
       post.uid = res.key;
-      res.on('child_added', (item) => {
-        post.text = item.val();
+      res.once('value', (item) => {
+        post.text = item.val().text;
+        post.user = item.val().user;
         callback(post);
       });
     });
@@ -24,7 +29,7 @@ const postApi = {
       Object.keys(posts.val()).forEach((key) => {
         allPosts.push(posts.val()[key]);
       });
-      callback(allPosts);
+      callback(allPosts.reverse());
     });
   },
 };
