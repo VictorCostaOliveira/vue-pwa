@@ -1,11 +1,11 @@
 <template>
   <v-app>
-    <v-navigation-drawer persistent :mini-variant="miniVariant" :clipped="clipped" v-model="drawer" enable-resize-watcher fixed app>
+    <v-navigation-drawer v-if="needTollBar" persistent :mini-variant="miniVariant" :clipped="clipped" v-model="drawer" enable-resize-watcher fixed app>
       <v-toolbar flat class="transparent">
         <v-list class="pa-0">
           <v-list-tile avatar>
             <v-list-tile-avatar>
-              <img :src="currentUser.photoURL">
+              <img v-if="!!currentUser.photoURL" :src="currentUser.photoURL">
             </v-list-tile-avatar>
 
             <v-list-tile-content>
@@ -67,7 +67,6 @@ export default {
       return !!auth.currentUser();
     },
     currentUser() {
-      console.log(auth.currentUser().photoURL);
       return auth.currentUser();
     },
   },
