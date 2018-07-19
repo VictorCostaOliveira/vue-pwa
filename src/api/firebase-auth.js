@@ -21,7 +21,6 @@ const auth = {
       .then(() => {
         firebaseAuth.signInWithEmailAndPassword(user.email, user.password)
           .then(() => {
-            debugger;
             router.push('/home-page');
           }).catch((error) => {
             callback(error.message);
@@ -33,8 +32,9 @@ const auth = {
   },
 
   signOut() {
-    firebase.signOut();
-    router.push('/');
+    firebaseAuth.signOut().then(() => {
+      this.$router.push('/');
+    });
   },
 };
 
