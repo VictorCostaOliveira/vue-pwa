@@ -39,7 +39,7 @@ export default {
     createPost() {
       if (this.text) {
         postApi.createPost(this.text, (post) => {
-          this.postList.push(post);
+          this.postList.unshift(post);
         });
         this.text = '';
       }
