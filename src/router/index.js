@@ -12,25 +12,25 @@ const router = new Router({
   routes: [
     {
       path: '*',
-      redirect: '/',
+      redirect: '/vue-pwa/#/',
     },
     {
       path: '/',
-      name: '/',
+      name: '/vue-pwa/#/',
       component: LandingPage,
     },
     {
-      path: '/login',
+      path: '/vue-pwa/#/login',
       name: 'Login',
       component: Login,
     },
     {
-      path: '/sign-in',
+      path: '/vue-pwa/#/sign-in',
       name: 'Signin',
       component: Signin,
     },
     {
-      path: '/home-page',
+      path: '/vue-pwa/#/home-page',
       name: 'Home',
       component: Home,
       meta: {
