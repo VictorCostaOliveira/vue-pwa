@@ -2,6 +2,7 @@ import firebase from '@/api/Api';
 import router from '../router';
 
 const firebaseAuth = firebase.auth();
+const provider = new firebase.auth.GoogleAuthProvider();
 
 const auth = {
   signin(user, callback) {
@@ -33,6 +34,12 @@ const auth = {
   },
   currentUser() {
     return firebaseAuth.currentUser;
+  },
+
+  googleLogin() {
+    firebaseAuth.signInWithRedirect(provider).then(() => {
+      router.push('/home-page');
+    });
   },
 
   signOut() {
