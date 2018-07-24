@@ -5,9 +5,9 @@
         <h1>Bem vindo</h1>
       </v-flex>
       <v-flex xs12 sm6 offset-sm3 class="text-xs-center" mt-5>
-        <v-btn xs4 color="primary" to="/login">Entrar</v-btn>
-        <v-btn xs4 color="primary" to="/sign-in">Cadastro</v-btn>
-        <v-btn xs4 color="primary" @click="googleLogin" >Google</v-btn>
+        <v-btn xs3 color="primary" to="/login">Entrar</v-btn>
+        <v-btn xs3 color="primary" to="/sign-in">Cadastro</v-btn>
+        <v-btn xs6 color="primary" @click="googleLogin" >Login com Google</v-btn>
       </v-flex>
     </v-layout>
   </v-container>
