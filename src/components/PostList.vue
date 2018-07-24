@@ -1,6 +1,6 @@
 <template>
   <v-list two-line class="meu-item">
-    <div v-for="(post, index) in posts" class="teste">
+    <div v-for="(post, index) in posts">
 
       <v-list-tile
         :key="post.title"
@@ -16,22 +16,6 @@
           <v-list-tile-sub-title >{{ post.text }}</v-list-tile-sub-title>
         </v-list-tile-content>
       </v-list-tile>
-      <!-- <v-list-tile-action @click="toggle(index)">
-        <v-list-tile-action-text>{{ post.action }}</v-list-tile-action-text>
-        <v-icon
-          v-if="selected.indexOf(index) < 0"
-          color="grey lighten-1"
-        >
-          star_border
-        </v-icon>
-
-        <v-icon
-          v-else
-          color="yellow darken-2"
-        >
-          star
-        </v-icon>
-      </v-list-tile-action> -->
       <v-divider></v-divider>
     </div>
   </v-list>
